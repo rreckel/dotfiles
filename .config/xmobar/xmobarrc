@@ -1,0 +1,25 @@
+
+
+Config {
+         font    = "xft:Jetbrains Mono NL:weight=bold:pixelsize=13:antialias=true:hinting=true"
+       , bgColor = "dark slate gray"
+       , fgColor = "wheat"
+       , position = Top
+       , textOffset = 15
+       , lowerOnStart = True
+       , hideOnStart = False
+       , persistent = True
+       , border = BottomB
+       , borderColor = "slate gray"
+       , commands = [
+                      Run Cpu ["-t", "cpu: <total>%","-H","50","--high","red"] 20
+                    , Run Com "uname" ["-r"] "" 3600
+                    , Run Memory ["-t", "mem: <used>M (<usedratio>%)"] 20
+                    , Run Weather "ELLX" ["-t", "<skyCondition> | <weather> | <tempC>C | <pressure>hPa | <rh>% | <windKnots>kn"] 36000
+                    , Run Date "%A, %e %B %Y | %H:%M:%S" "date" 10
+                    , Run UnsafeStdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%uname% | %cpu% | %memory% | workspace: %UnsafeStdinReader%}{%ELLX% | %date%"
+       }
