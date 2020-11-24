@@ -1,5 +1,6 @@
 
 import XMonad
+import XMonad.Hooks.SetWMName
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.SpawnOnce
@@ -10,7 +11,8 @@ import System.IO
 
 
 myStartupHook = do
-  spawnOnce "nitrogen --restore &"
+  spawn "$HOME/.xmonad/scripts/autostart.sh"
+  setWMName "LG3D"
 
 myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
@@ -35,6 +37,6 @@ main = do
                    ppOutput = hPutStrLn xmproc
                  , ppSep = " | "
                  }
-           -- , startupHook = myStartupHook
+     , startupHook = myStartupHook
      }
 
