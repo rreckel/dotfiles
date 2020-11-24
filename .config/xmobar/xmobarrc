@@ -14,12 +14,13 @@ Config {
        , commands = [
                       Run Cpu ["-t", "cpu: <total>%","-H","50","--high","red"] 20
                     , Run Com "uname" ["-r"] "" 3600
+                    , Run Com "/bin/bash" ["-c", "sudo pacman -Sy > /dev/null && pacman -Qu | wc -l"] "updates" 1800
                     , Run Memory ["-t", "mem: <used>M (<usedratio>%)"] 20
                     , Run Weather "ELLX" ["-t", "<skyCondition> | <weather> | <tempC>C | <pressure>hPa | <rh>% | <windKnots>kn"] 36000
-                    , Run Date "%A, %e %B %Y | %H:%M:%S" "date" 10
+                    , Run Date "%a, %e %b %Y | %H:%M:%S" "date" 10
                     , Run UnsafeStdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%uname% | %cpu% | %memory% | workspace: %UnsafeStdinReader%}{%ELLX% | %date%"
+       , template = "%uname%: %updates% | %cpu% | %memory% | workspace: %UnsafeStdinReader%}{%ELLX% | %date%"
        }
