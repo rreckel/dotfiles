@@ -12,6 +12,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+
 export HISTCONTROL=ignoreboth:erasedups
 
 PS1='[\u@\h \W]\$ '
@@ -189,6 +190,8 @@ alias probe="sudo -E hw-probe -all -upload"
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
 
+alias config='/usr/bin/git --git-dir=/home/rreckel/dotfiles --work-tree=/home/rreckel'
+
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
 ex ()
@@ -222,4 +225,3 @@ ex ()
 [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
 neofetch
-alias config='/usr/bin/git --git-dir=/home/rreckel/dotfiles --work-tree=/home/rreckel'
